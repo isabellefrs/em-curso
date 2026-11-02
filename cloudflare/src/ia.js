@@ -160,3 +160,14 @@ export async function perguntar(env, pergunta) {
     : null;
   return criarAssistente({ base, gemini }).perguntar(pergunta);
 }
+
+export async function receberFeedbackIA(env, avaliacao) {
+  if (!['ajudou', 'melhorar'].includes(avaliacao)) throw fail('Avaliação inválida.');
+  await run(env.DB, 'INSERT INTO feedback_ia(id, avaliacao, criado_em) VALUES(?,?,?)', crypto.randomUUID(), avaliacao, Date.now());
+  return { ok: true };
+}
+export async function usoFeedbackIA(env) {
+  const since = Date.now() - 30 * 86400000;
+  const row = await one(env.DB, 'SELECT SUM(CASE WHEN criado_em >= ? AND avaliacao = ? THEN 1 ELSE 0 END) ajudou, SUM(CASE WHEN criado_em >= ? AND avaliacao = ? THEN 1 ELSE 0 END) melhorar, SUM(CASE WHEN criado_em >= ? THEN 1 ELSE 0 END) total, COUNT(*) totalGeral FROM feedback_ia', since, 'ajudou', since, 'melhorar', since);
+  return Object.fromEntries(Object.entries(row).map(([key, value]) => [key, value || 0]));
+}

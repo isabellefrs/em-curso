@@ -3,6 +3,7 @@ import Eventos from './paginas/Eventos.jsx';
 import Administracao from './paginas/Administracao.jsx';
 import Atendimentos from './paginas/Atendimentos.jsx';
 import Avisos from './paginas/Avisos.jsx';
+import Privacidade from './paginas/Privacidade.jsx';
 
 const paginas = {
   '/': {
@@ -24,6 +25,12 @@ const paginas = {
     nome: 'Assistente IA',
     subtitulo: 'Informação com fonte. Estudos com direção.',
     Componente: Assistente,
+  },
+  '/privacidade': {
+    nome: 'Privacidade',
+    subtitulo: 'Como o Em Curso utiliza os dados.',
+    Componente: Privacidade,
+    navegacao: false,
   },
   '/admin': {
     nome: 'Administração',
@@ -54,7 +61,7 @@ export default function App() {
           </a>
           <p className="subtitulo">{pagina?.subtitulo || 'Vamos encontrar seu caminho.'}</p>
           <nav className="navegacao" aria-label="Navegação principal">
-            {Object.entries(paginas).map(([url, { nome }]) => (
+            {Object.entries(paginas).filter(([, item]) => item.navegacao !== false).map(([url, { nome }]) => (
               <a key={url} href={url} aria-current={url === caminho ? 'page' : undefined}>
                 {nome}
               </a>
@@ -75,6 +82,7 @@ export default function App() {
         <footer className="rodape">
           <span>Em Curso · Aprender, planejar, conectar.</span>
           <a href="/avisos">Receber lembretes da turma ↗</a>
+          <a href="/privacidade">Privacidade e dados</a>
         </footer>
       </main>
     </>

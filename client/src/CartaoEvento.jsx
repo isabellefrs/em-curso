@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { formatarData } from './eventos.js';
+import { baixarIcs } from './ical.js';
 
 export default function CartaoEvento({
   evento,
@@ -38,6 +39,7 @@ export default function CartaoEvento({
       <p>
         Data: <time dateTime={evento.data}>{formatarData(evento.data)}</time>
       </p>
+      {!administracao && <button type="button" className="secundario" onClick={() => baixarIcs([evento])}>Adicionar ao calendário (.ics)</button>}
       {administracao && (
         <div className="acoes-evento">
           <button

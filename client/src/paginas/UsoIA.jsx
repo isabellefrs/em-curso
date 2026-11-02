@@ -6,14 +6,15 @@ const dataHora = (valor) =>
 
 export default function UsoIA({ requisicao }) {
   const recurso = useRecurso('/admin/ia/uso');
+  const feedback = useRecurso('/admin/ia/feedback');
   const dados = recurso.dados;
 
   async function atualizar() {
     try {
       await requisicao('/admin/ia/uso');
-      await recurso.recarregar();
+      await Promise.all([recurso.recarregar(), feedback.recarregar()]);
     } catch {
-      await recurso.recarregar();
+      await Promise.all([recurso.recarregar(), feedback.recarregar()]);
     }
   }
 
@@ -93,6 +94,11 @@ export default function UsoIA({ requisicao }) {
           {!dados.chamadas && (
             <p className="estado-vazio">Ainda não há chamadas registradas. O contador começa na próxima consulta ao Gemini.</p>
           )}
+          <div className="painel" aria-labelledby="feedback-ia-titulo">
+            <h3 id="feedback-ia-titulo">Retorno sobre as respostas</h3>
+            <p>Últimos 30 dias: {feedback.dados?.total || 0} avaliações · {feedback.dados?.ajudou || 0} ajudaram · {feedback.dados?.melhorar || 0} pediram melhoria. Total desde o início: {feedback.dados?.totalGeral || 0}.</p>
+            <p className="aviso">Guardamos apenas a avaliação e a data. A pergunta, a resposta e a identidade do visitante não são armazenadas junto do feedback.</p>
+          </div>
           <div className="painel">
             <h3>Limite gratuito disponível</h3>
             <p>

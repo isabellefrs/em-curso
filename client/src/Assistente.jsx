@@ -14,6 +14,7 @@ export default function Assistente() {
   const [mensagens, setMensagens] = useState([]);
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState('');
+  const [avaliacoes, setAvaliacoes] = useState({});
   const campo = useRef(null);
   const conversa = useRef(null);
   useEffect(() => {
@@ -37,13 +38,23 @@ export default function Assistente() {
         body: { pergunta: texto },
         timeout: 90000,
       });
-      setMensagens((anteriores) => [...anteriores, { pergunta: texto, ...resultado }]);
+      setMensagens((anteriores) => [...anteriores, { id: crypto.randomUUID(), pergunta: texto, ...resultado }]);
       setPergunta('');
     } catch (e) {
       setErro(e.message);
     } finally {
       setEnviando(false);
       campo.current?.focus();
+    }
+  }
+
+  async function avaliar(id, avaliacao) {
+    setAvaliacoes((anterior) => ({ ...anterior, [id]: { enviando: true } }));
+    try {
+      await api('/assistente/feedback', { method: 'POST', body: { avaliacao } });
+      setAvaliacoes((anterior) => ({ ...anterior, [id]: { enviado: avaliacao } }));
+    } catch (error) {
+      setAvaliacoes((anterior) => ({ ...anterior, [id]: { erro: error.message } }));
     }
   }
 
@@ -131,7 +142,7 @@ export default function Assistente() {
             </div>
           )}
           {mensagens.map((mensagem, i) => (
-            <article className="troca" key={i}>
+            <article className="troca" key={mensagem.id || i}>
               <div className="pergunta">
                 <strong>Você</strong>
                 <p>{mensagem.pergunta}</p>
@@ -200,6 +211,13 @@ export default function Assistente() {
                     ))}
                   </div>
                 )}
+                <div className="feedback-ia" role="group" aria-label="Avalie esta resposta">
+                  <span>Esta resposta ajudou?</span>
+                  <button type="button" className="secundario" aria-label="Esta resposta ajudou" disabled={Boolean(avaliacoes[mensagem.id]?.enviado) || avaliacoes[mensagem.id]?.enviando} onClick={() => avaliar(mensagem.id, 'ajudou')}>Ajudou</button>
+                  <button type="button" className="secundario" disabled={Boolean(avaliacoes[mensagem.id]?.enviado) || avaliacoes[mensagem.id]?.enviando} onClick={() => avaliar(mensagem.id, 'melhorar')}>Precisa melhorar</button>
+                  {avaliacoes[mensagem.id]?.enviado && <span role="status">Obrigado pelo retorno.</span>}
+                  {avaliacoes[mensagem.id]?.erro && <span role="status">Não foi possível enviar; tente novamente.</span>}
+                </div>
               </div>
             </article>
           ))}

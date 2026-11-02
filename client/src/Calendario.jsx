@@ -43,9 +43,9 @@ export default function Calendario({ mes, onMudarMes, eventos }) {
           <caption className="sr-only">Eventos de {tituloMes(mes)}</caption>
           <thead>
             <tr>
-              {['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].map((dia) => (
-                <th scope="col" key={dia}>
-                  {dia}
+              {['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'].map((dia) => (
+                <th scope="col" key={dia} aria-label={dia}>
+                  {dia.slice(0, 3)}
                 </th>
               ))}
             </tr>

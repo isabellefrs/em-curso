@@ -69,6 +69,13 @@ export default function AdminAvisos({ requisicao }) {
       </div>
       {dados && (
         <>
+          <section className="painel" aria-labelledby="estado-lembretes">
+            <h3 id="estado-lembretes">Estado do serviço de lembretes</h3>
+            <p>{dados.habilitado ? 'Provedor Brevo configurado.' : 'Envio de e-mail não configurado.'}</p>
+            <p>{dados.ultimaAutomatica ? `Última verificação automática: ${dataHora(dados.ultimaAutomatica.inicio)} · ${dados.ultimaAutomatica.estado}.` : 'Ainda não há verificação automática registrada.'}</p>
+            <p>Fila: {dados.fila?.pendentes || 0} lembrete(s) aguardando · {dados.fila?.atencao || 0} envio(s) para conferir.</p>
+            <p className="aviso">O painel mostra o que o Em Curso registrou. “Aceito pelo provedor” não confirma entrega na caixa de entrada.</p>
+          </section>
           <section className="painel-resumo" aria-label="Resumo dos avisos">
             {[
               [dados.ativos, 'Alunos ativos'],
@@ -131,7 +138,7 @@ export default function AdminAvisos({ requisicao }) {
               <thead>
                 <tr>
                   {['Aluno', 'E-mail', 'Turma', 'Situação', 'Ações'].map((h) => (
-                    <th key={h}>{h}</th>
+                    <th scope="col" key={h}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -163,7 +170,7 @@ export default function AdminAvisos({ requisicao }) {
               <thead>
                 <tr>
                   {['Data', 'Destinatário', 'Tipo / evento', 'Situação'].map((h) => (
-                    <th key={h}>{h}</th>
+                    <th scope="col" key={h}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -219,7 +226,7 @@ export default function AdminAvisos({ requisicao }) {
               <thead>
                 <tr>
                   {['Início', 'Origem', 'Situação', 'Lembretes', 'Resumo por e-mail'].map((h) => (
-                    <th key={h}>{h}</th>
+                    <th scope="col" key={h}>{h}</th>
                   ))}
                 </tr>
               </thead>

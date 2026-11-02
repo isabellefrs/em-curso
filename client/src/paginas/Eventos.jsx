@@ -10,6 +10,7 @@ import FormularioEvento from '../FormularioEvento.jsx';
 import LimparPeriodo from '../componentes/LimparPeriodo.jsx';
 import { Campo, Mensagem } from '../componentes/Interface.jsx';
 import AcessoRapido from '../componentes/AcessoRapido.jsx';
+import { baixarIcs } from '../ical.js';
 
 export default function Eventos({ administracao = false, requisicao = api }) {
   const recurso = useRecurso('/eventos');
@@ -119,7 +120,11 @@ export default function Eventos({ administracao = false, requisicao = api }) {
       ) : (
         <>
           {!administracao && <Calendario mes={mes} onMudarMes={setMes} eventos={visiveis} />}
-          <h3>{administracao ? 'Eventos de todos os meses' : `Eventos de ${tituloMes(mes)}`}</h3>
+          <div className="titulo-secao eventos-acoes">
+            <h3>{administracao ? 'Eventos de todos os meses' : `Eventos de ${tituloMes(mes)}`}</h3>
+            {!administracao && <button type="button" className="secundario" disabled={!visiveis.length} onClick={() => baixarIcs(visiveis)}>Baixar eventos exibidos (.ics)</button>}
+          </div>
+          {!administracao && <p className="aviso">O arquivo pode ser importado no Google Agenda, Calendário Apple e outros aplicativos.</p>}
           <p role="status">{visiveis.length} evento(s) encontrado(s)</p>
           <section className="eventos" aria-label="Eventos escolares">
             {visiveis.map((e) => (

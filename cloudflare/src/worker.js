@@ -1,7 +1,7 @@
 import { auth, session } from './auth.js';
 import { catalogo } from './catalogo.js';
 import { avisos, scheduled } from './avisos.js';
-import { statusIA, usoIA, perguntar } from './ia.js';
+import { statusIA, usoIA, usoFeedbackIA, receberFeedbackIA, perguntar } from './ia.js';
 import { body, fail, json, rateLimit } from './db.js';
 export default {
   async fetch(request, env, ctx) {
@@ -32,9 +32,11 @@ export default {
       if (adminRoute && !(await session(request, env)))
         throw fail('Entre como administrador para continuar.', 401);
       if (path === '/api/admin/ia/uso' && method === 'GET') return json(await usoIA(env));
+      if (path === '/api/admin/ia/feedback' && method === 'GET') return json(await usoFeedbackIA(env));
       let data;
       if (method !== 'GET') {
         if (path === '/api/assistente/perguntar') await rateLimit(request, env, 'ia', 10);
+        else if (path === '/api/assistente/feedback') await rateLimit(request, env, 'ia-feedback', 20);
         else if (path.startsWith('/api/avisos/'))
           await rateLimit(request, env, path, path.endsWith('/inscrever') ? 5 : 20);
         else if (adminRoute) await rateLimit(request, env, 'admin', 60);
@@ -49,6 +51,10 @@ export default {
         (await catalogo(request, env, data)) || (await avisos(request, env, data, ctx));
       if (result) return result;
       if (path === '/api/assistente/status' && method === 'GET') return json(await statusIA(env));
+      if (path === '/api/assistente/feedback' && method === 'POST') {
+        if (Object.keys(data).length !== 1 || !('avaliacao' in data)) throw fail('Confira a avaliação.');
+        return json(await receberFeedbackIA(env, data.avaliacao));
+      }
       if (path === '/api/assistente/perguntar' && method === 'POST') {
         if (Object.keys(data).length !== 1 || !('pergunta' in data))
           throw fail('Confira a pergunta.');

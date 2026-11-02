@@ -6,6 +6,7 @@
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
   "preview_urls": false,
+  "observability": { "enabled": true, "logs": { "enabled": true, "head_sampling_rate": 0.1, "invocation_logs": true, "persist": true }, "issues": { "enabled": true } },
   "assets": {
     "directory": "../client/dist",
     "binding": "ASSETS",

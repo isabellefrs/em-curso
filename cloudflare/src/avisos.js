@@ -306,6 +306,8 @@ async function panel(env) {
     ...result,
     habilitado: emailEnabled(env),
     executando: result.executando > 0,
+    fila: await one(env.DB, `SELECT SUM(estado='pendente') pendentes,SUM(estado='incerto') atencao FROM envios WHERE tipo='lembrete'`),
+    ultimaAutomatica: await one(env.DB, `SELECT * FROM execucoes WHERE origem='automatico' ORDER BY inicio DESC LIMIT 1`),
     execucoes: await all(env.DB, 'SELECT * FROM execucoes ORDER BY inicio DESC LIMIT 20'),
   };
 }

@@ -502,3 +502,12 @@ summary {
 .login .botao:hover {
   background: var(--gold-light);
 }
+
+.feedback-ia { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:18px; padding-top:12px; border-top:1px solid var(--line); }
+.feedback-ia span { font-size:.9rem; }
+.eventos-acoes { align-items:center; flex-wrap:wrap; }
+.eventos-acoes h3 { margin:0; }
+.pagina-texto { max-width:850px; margin:0 auto; padding:clamp(20px,5vw,56px); background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:16px; }
+.pagina-texto h2 { margin-top:8px; }
+.pagina-texto h3 { margin-top:28px; }
+.pagina-texto p { line-height:1.7; }

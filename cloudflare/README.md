@@ -71,3 +71,10 @@ Documentos: `knowledge:prepare` gera `.local/conhecimento.sql` a partir de `serv
 As contas externas, cotas, disponibilidade do Gemini e aceitação do Brevo continuam sujeitos aos respectivos provedores. Nada nesta preparação contrata plano pago ou garante hospedagem vitalícia.
 
 Referências: [Workers](https://developers.cloudflare.com/workers/), [D1](https://developers.cloudflare.com/d1/), [limites](https://developers.cloudflare.com/workers/platform/limits/).
+
+## Operação e recuperação
+
+- Observabilidade: no painel Cloudflare, abra Workers & Pages → em-curso → Observability para consultar logs e problemas.
+- O Worker grava amostra de 10% das invocações. Evite registrar conteúdo de perguntas, e-mails ou segredos em logs.
+- Consulte ../docs/RECUPERACAO_D1.md para Time Travel e exportações manuais do D1.
+- O painel de avisos mostra a fila e a última execução automática; aceite do provedor não garante entrega na caixa postal.
