@@ -234,7 +234,7 @@ export default function AdminAvisos({ requisicao }) {
                 {dados?.execucoes.map((e) => (
                   <tr key={e.id}>
                     <td data-label="Início">{dataHora(e.inicio)}</td>
-                    <td data-label="Origem">{e.origem === 'automatica' ? 'Diária' : 'Manual'}</td>
+                    <td data-label="Origem">{e.origem === 'automatico' ? 'Diária' : 'Manual'}</td>
                     <td data-label="Situação">
                       {
                         {
