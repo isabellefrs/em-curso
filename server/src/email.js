@@ -45,7 +45,7 @@ export function criarEmail(env = process.env) {
     async enviar({ to, subject, text, id }) {
       if (!transporter) throw new Error('E-mail não configurado.');
       const resultado = await transporter.sendMail({
-        from: { name: 'Campus Hub · 1º Info 2', address: remetente },
+        from: { name: 'Em Curso · 1º Info 2', address: remetente },
         to,
         subject,
         text,

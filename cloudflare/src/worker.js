@@ -11,7 +11,7 @@ export default {
     if (!path.startsWith('/api/'))
       return env.ASSETS
         ? env.ASSETS.fetch(request)
-        : new Response('Campus Hub: compile o frontend.', { status: 503 });
+        : new Response('Em Curso: compile o frontend.', { status: 503 });
     try {
       if (!['GET', 'POST', 'PUT', 'DELETE'].includes(method))
         throw fail('Método não permitido.', 405);

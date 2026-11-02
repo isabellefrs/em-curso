@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "campus-hub",
+  "name": "em-curso",
   "main": "src/worker.js",
   "compatibility_date": "2026-10-23",
   "compatibility_flags": ["nodejs_compat"],
@@ -20,7 +20,7 @@
     "ADMIN_REPORT_EMAIL": "admin@example.com",
     "REMINDER_HOUR": "8",
     "GEMINI_MODEL": "gemini-3.5-flash-lite",
-    "PUBLIC_URL": "https://campus-hub.your-subdomain.workers.dev"
+    "PUBLIC_URL": "https://em-curso.emcurso.workers.dev"
   },
   "d1_databases": [{
     "binding": "DB",

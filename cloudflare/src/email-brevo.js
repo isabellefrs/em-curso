@@ -1,6 +1,6 @@
 import { emailValido } from '../../server/src/validacao.js';
 
-const remetenteNome = 'Campus Hub · 1º Info 2';
+const remetenteNome = 'Em Curso · 1º Info 2';
 
 export function criarEmailBrevo(env) {
   const habilitado = env.EMAIL_ENABLED === 'true';

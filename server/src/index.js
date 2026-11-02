@@ -46,7 +46,7 @@ try {
     notificacoes,
     hora: Number(process.env.REMINDER_HOUR || 8),
   });
-  console.log('Servidor Campus Hub disponível em http://127.0.0.1:' + (process.env.PORT || 3001));
+  console.log('Servidor Em Curso disponível em http://127.0.0.1:' + (process.env.PORT || 3001));
 } catch (error) {
   console.error('Não foi possível iniciar o servidor:', error.message);
   await app.close();

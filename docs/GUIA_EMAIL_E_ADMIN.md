@@ -32,7 +32,7 @@ REMINDER_HOUR=8
 
 1. Configure uma conta remetente própria e verificada no provedor de e-mail. Não coloque senhas no projeto. Referência oficial: https://support.google.com/accounts/answer/185833?hl=pt-BR
 2. Preencha `SMTP_PASSWORD` diretamente no `.env` local. Não envie credenciais pelo chat e não as coloque em arquivos do cliente.
-3. Para alunos acessarem os links de confirmação e cancelamento, `PUBLIC_URL` deve ser o endereço público HTTPS do Campus Hub. `localhost` e `127.0.0.1` só funcionam no próprio computador. Inclua a origem pública em `APP_ORIGINS` ao implantar.
+3. Para alunos acessarem os links de confirmação e cancelamento, `PUBLIC_URL` deve ser o endereço público HTTPS do Em Curso. `localhost` e `127.0.0.1` só funcionam no próprio computador. Inclua a origem pública em `APP_ORIGINS` ao implantar.
 4. Defina `EMAIL_ENABLED=true` somente quando a configuração estiver pronta e reinicie o servidor. Isso habilita inscrições e a rotina automática.
 5. Faça uma inscrição real controlada e confira a confirmação, o lembrete e o resumo na caixa de entrada. Essa validação real não foi executada nesta entrega, pois não há credencial SMTP configurada.
 

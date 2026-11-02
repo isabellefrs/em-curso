@@ -73,7 +73,7 @@ export default function CartaoEvento({
             if (event.key === 'Escape') cancelarExclusao();
           }}
         >
-          <p>Excluir “{evento.titulo}” do banco do Campus Hub?</p>
+          <p>Excluir “{evento.titulo}” do banco do Em Curso?</p>
           <p>Data do evento: {formatarData(evento.data)}</p>
           <div className="acoes-evento">
             <button

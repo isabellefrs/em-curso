@@ -1,4 +1,4 @@
-# Campus Hub — versão Cloudflare
+# Em Curso — versão Cloudflare
 
 Esta pasta contém a adaptação para Workers + D1. A versão Fastify/SQLite em `../server` continua disponível. Os testes usam dados fictícios e não leem `.env`.
 
@@ -11,7 +11,7 @@ Esta pasta contém a adaptação para Workers + D1. A versão Fastify/SQLite em 
 - Busca documental usa índice textual FTS5 no D1, com os mesmos controles de escopo e citações do assistente existente. Os embeddings opcionais do servidor local não são usados nesta versão.
 - Agendamento a cada minuto, no fuso de São Paulo. Depois das 8h, planeja uma execução automática diária. Processa até três lembretes por chamada; o botão manual começa a fila imediatamente, que pode continuar nos ciclos seguintes.
 - E-mails transacionais do Worker usam a API HTTPS do Brevo; a configuração de produção permanece desabilitada até a chave da API e o remetente serem verificados.
-- O Worker de validação usa `workers.dev`; confirmação de aceite do Brevo não comprova entrega na caixa de entrada.
+- O Worker de produção usa `workers.dev`; confirmação de aceite do Brevo não comprova entrega na caixa de entrada.
 
 ## Verificar localmente
 
@@ -37,8 +37,8 @@ Para prévia local, copie `.dev.vars.example` para `.dev.vars` e informe as cred
 
 1. Autenticar o terminal pelo fluxo oficial `npm.cmd exec wrangler -- login`. A pessoa dona da conta conclui a autenticação no navegador.
 2. Copiar `wrangler.example.jsonc` para `wrangler.jsonc`, criar um banco D1 gratuito chamado `campus-hub` e colocar o ID retornado no arquivo local.
-3. A configuração usa o nome `campus-hub` e a URL `https://campus-hub.<seu-subdominio>.workers.dev`.
-4. Definir `PUBLIC_URL` como a origem HTTPS exata do Worker, sem barra final. O mesmo endereço deve constar no callback autorizado do cliente OAuth Google: `/api/auth/google/callback`.
+3. A configuração usa o Worker `em-curso`. Com o subdomínio de conta `emcurso`, a URL pública fica `https://em-curso.emcurso.workers.dev`.
+4. Definir `PUBLIC_URL` como a origem HTTPS exata do Worker, sem barra final. Os links de confirmação e cancelamento de e-mail usam essa origem.
 5. Escolher um nome de usuário administrativo e uma senha nova, exclusiva e com 12 a 128 caracteres. Não reutilizar a senha antiga do projeto.
 6. Cadastrar `ADMIN_USERNAME` e `ADMIN_PASSWORD` como segredos do Worker usando `npm.cmd exec wrangler -- secret put NOME_DA_VARIAVEL`. O Wrangler pedirá cada valor sem colocá-lo no histórico do terminal. Não digitar esses valores no código, no `.env` versionado, em commits ou mensagens.
 7. No Brevo, ativar o envio transacional, registrar e verificar o remetente definido em `EMAIL_FROM` e gerar uma API key. Um remetente `@gmail.com` pode ser substituído pelo domínio de envio do Brevo; autenticar um domínio próprio melhora o alinhamento e a entrega.

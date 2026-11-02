@@ -1,4 +1,4 @@
-# Interface do Campus Hub
+# Interface do Em Curso
 
 React com JavaScript, Vite e CSS. O calendário público consulta o servidor; a administração exige sessão e usa a mesma API para cadastrar, editar e excluir eventos.
 

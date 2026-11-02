@@ -49,7 +49,7 @@ export default function Administracao() {
     );
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'campus-hub-previa-local.json';
+    link.download = 'em-curso-previa-local.json';
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }

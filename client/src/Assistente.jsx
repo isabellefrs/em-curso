@@ -59,7 +59,7 @@ export default function Assistente() {
   }
 
   return (
-    <section className="assistente-layout" aria-label="Assistente do Campus Hub">
+    <section className="assistente-layout" aria-label="Assistente do Em Curso">
       <aside className="assistente-info">
         <span className="etiqueta">SEU APOIO NO CAMPUS</span>
         <h2>
@@ -116,7 +116,7 @@ export default function Assistente() {
       </aside>
       <div className="chat">
         <div className="chat-topo">
-          <h2>Assistente Campus Hub</h2>
+          <h2>Assistente Em Curso</h2>
           <span className="etiqueta">FONTES À VISTA</span>
         </div>
         <div ref={conversa} className="conversa" aria-live="polite" aria-busy={enviando}>
@@ -141,8 +141,8 @@ export default function Assistente() {
                   {mensagem.modo === 'local'
                     ? 'Consulta local · sem geração IA'
                     : mensagem.modo === 'gemini'
-                      ? 'Campus Hub · Gemini'
-                      : 'Campus Hub'}
+                      ? 'Em Curso · Gemini'
+                      : 'Em Curso'}
                 </strong>
                 <p className="texto-resposta">{mensagem.texto}</p>
                 {mensagem.tabela?.cabecalho?.length > 0 && mensagem.tabela?.linhas?.length > 0 && (

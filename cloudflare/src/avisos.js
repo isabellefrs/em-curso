@@ -101,7 +101,7 @@ export async function subscribe(env, b, sender) {
       id,
       {
         to: address,
-        subject: 'Confirme seus avisos · Campus Hub',
+        subject: 'Confirme seus avisos · Em Curso',
         text: `Olá, ${b.nome.trim()}!\n\nConfirme sua inscrição para receber os eventos da ${b.turma === 'turma_a' ? 'Turma A' : 'Turma B'} e os eventos gerais, com 7, 3 e 1 dia de antecedência:\n${link(env, 'confirmar', key)}\n\nO link expira em 24 horas. Se não foi você, ignore esta mensagem.`,
       },
       sender,
@@ -255,7 +255,7 @@ export async function processQueue(env, sender) {
           summaryId,
           {
             to: env.ADMIN_REPORT_EMAIL || 'admin@example.com',
-            subject: `Campus Hub · resumo de ${format(job.dia)}`,
+            subject: `Em Curso · resumo de ${format(job.dia)}`,
             text: `Lembretes aceitos pelo provedor de e-mail: ${sent}\nEnvios não confirmados: ${failed}\n\nConfira o histórico na administração. Aceitação do provedor não garante chegada à caixa de entrada.`,
           },
           sender,

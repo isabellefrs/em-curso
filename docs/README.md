@@ -1,6 +1,6 @@
 # Documentação
 
-Esta pasta reúne as explicações, decisões e anotações de aprendizado do Campus Hub.
+Esta pasta reúne as explicações, decisões e anotações de aprendizado do Em Curso.
 
 ## Organização inicial
 

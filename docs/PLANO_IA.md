@@ -1,4 +1,4 @@
-# Campus Hub — assistente e identidade visual
+# Em Curso — assistente e identidade visual
 
 ## O que funciona nesta entrega
 

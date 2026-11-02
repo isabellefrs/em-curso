@@ -1,4 +1,4 @@
-# Servidor do Campus Hub
+# Servidor do Em Curso
 
 API local em JavaScript, Node.js 24.14+, Fastify e SQLite. A organização separa a montagem da aplicação (`src/app.js`) de sua execução (`src/index.js`), como a referência do minicurso de Igor Sasaki.
 

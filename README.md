@@ -1,8 +1,8 @@
-# Campus Hub
+# Em Curso
 
 Projeto educacional para organizar calendário, atendimentos docentes, avisos por e-mail e consultas com IA para estudantes do IFSP Araraquara. Não é um canal oficial do IFSP.
 
-O repositório se chama `campus-hub` por enquanto. O nome do repositório pode ser alterado depois sem mudar o nome exibido no site nem a hospedagem.
+O produto e o repositório adotam a marca **Em Curso**.
 
 ## Estrutura
 

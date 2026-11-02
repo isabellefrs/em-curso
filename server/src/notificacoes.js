@@ -59,7 +59,7 @@ export function criarNotificacoes({ db, email, agora = Date.now }) {
     ).run(envioId, envioId, id, agora());
     await entregar(envioId, {
       to: endereco,
-      subject: 'Confirme seus avisos · Campus Hub',
+      subject: 'Confirme seus avisos · Em Curso',
       text: `Olá, ${nome}!\n\nVocê escolheu a ${turma === 'turma_a' ? 'turma A' : 'turma B'}. Confirme para receber os avisos de sua turma e os eventos gerais, com 7, 3 e 1 dia de antecedência:\n\n${link('confirmar', chave)}\n\nO link expira em 24 horas. Se não foi você, ignore esta mensagem. Nenhum aviso será enviado antes da confirmação.`,
     });
     return { mensagem: RESPOSTA_CADASTRO };
@@ -174,7 +174,7 @@ export function criarNotificacoes({ db, email, agora = Date.now }) {
         ).run(id, id, agora(), execucao);
         resumo = (await entregar(id, {
           to: email.adminEmail,
-          subject: `Campus Hub · resumo dos lembretes de ${formatarData(dia)}`,
+          subject: `Em Curso · resumo dos lembretes de ${formatarData(dia)}`,
           text: `Rotina concluída.\nLembretes aceitos pelo SMTP: ${enviados}\nEnvios não confirmados: ${falhas}\n\nConfira o histórico na administração. Aceitação pelo SMTP não garante chegada à caixa de entrada.`,
         }))
           ? 'enviado'

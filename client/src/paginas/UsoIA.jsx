@@ -40,7 +40,7 @@ export default function UsoIA({ requisicao }) {
           )}
           <p className="aviso">
             Modelo configurado: <strong>{dados.modeloConfigurado}</strong>. Os totais contam chamadas
-            feitas pelo Campus Hub desde a ativação deste painel{dados.inicio ? `, iniciada em ${dataHora(dados.inicio)}` : ''}.
+            feitas pelo Em Curso desde a ativação deste painel{dados.inicio ? `, iniciada em ${dataHora(dados.inicio)}` : ''}.
             Chamadas feitas diretamente no AI Studio ou em outros aplicativos não entram aqui.
           </p>
           <section className="painel-resumo" aria-label="Uso acumulado do Gemini">
@@ -104,7 +104,7 @@ export default function UsoIA({ requisicao }) {
             </a>
             <p className="aviso">
               O histórico deste painel começa quando o contador foi ativado. O consumo anterior não
-              pode ser recuperado pela API usada pelo Campus Hub.
+              pode ser recuperado pela API usada pelo Em Curso.
             </p>
           </div>
         </>

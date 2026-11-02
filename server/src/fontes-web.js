@@ -64,7 +64,7 @@ export async function baixarFonte(fonte, fetcher = fetch) {
     response = await fetcher(url, {
       redirect: 'manual',
       signal,
-      headers: { 'User-Agent': 'CampusHub/1.0 (educational document index)' },
+      headers: { 'User-Agent': 'EmCurso/1.0 (educational document index)' },
     });
     if ([301, 302, 303, 307, 308].includes(response.status)) {
       const destino = response.headers.get('location');

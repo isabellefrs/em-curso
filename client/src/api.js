@@ -16,7 +16,7 @@ export async function api(caminho, { method = 'GET', body, timeout = 15000 } = {
     });
   } catch {
     throw new Error(
-      'Não foi possível conectar ao Campus Hub. Confira sua conexão e tente novamente.',
+      'Não foi possível conectar ao Em Curso. Confira sua conexão e tente novamente.',
     );
   }
   let dados;

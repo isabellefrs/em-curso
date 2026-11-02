@@ -43,12 +43,12 @@ export default function App() {
       </a>
       <main>
         <header>
-          <a className="marca" href="/" aria-label="Campus Hub, início">
+          <a className="marca" href="/" aria-label="Em Curso, início">
             <img src="/favicon.svg" alt="" width="64" height="64" />
             <div>
               <span className="etiqueta">IFSP ARARAQUARA · 1º Info 2</span>
               <h1>
-                Campus Hub<span>.</span>
+                Em Curso<span>.</span>
               </h1>
             </div>
           </a>
@@ -60,7 +60,7 @@ export default function App() {
               </a>
             ))}
           </nav>
-          <p className="aviso">Projeto estudantil · Campus Hub não é um canal oficial do IFSP.</p>
+          <p className="aviso">Projeto estudantil · Em Curso não é um canal oficial do IFSP.</p>
         </header>
         <div id="conteudo" tabIndex={-1}>
           {Componente ? (
@@ -73,7 +73,7 @@ export default function App() {
           )}
         </div>
         <footer className="rodape">
-          <span>Campus Hub · Aprender, planejar, conectar.</span>
+          <span>Em Curso · Aprender, planejar, conectar.</span>
           <a href="/avisos">Receber lembretes da turma ↗</a>
         </footer>
       </main>
