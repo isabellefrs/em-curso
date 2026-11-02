@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "campus-hub",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../client/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "triggers": { "crons": ["* * * * *"] },
+  "vars": {
+    "EMAIL_ENABLED": "false",
+    "EMAIL_PROVIDER": "brevo",
+    "EMAIL_FROM": "sala@example.com",
+    "ADMIN_REPORT_EMAIL": "admin@example.com",
+    "REMINDER_HOUR": "8",
+    "GEMINI_MODEL": "gemini-3.5-flash-lite",
+    "PUBLIC_URL": "https://campus-hub.your-subdomain.workers.dev"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "campus-hub",
+    "database_id": "00000000-0000-0000-0000-000000000000",
+    "migrations_dir": "migrations"
+  }]
+}

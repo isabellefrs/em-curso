@@ -1,0 +1,12 @@
+# Somente exemplo. Não colocar segredos em wrangler.jsonc nem no frontend.
+PUBLIC_URL=http://127.0.0.1:8787
+EMAIL_ENABLED=false
+EMAIL_PROVIDER=brevo
+EMAIL_FROM=sala@example.com
+BREVO_API_KEY=
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-3.5-flash-lite
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=
+ADMIN_REPORT_EMAIL=admin@example.com
+REMINDER_HOUR=8

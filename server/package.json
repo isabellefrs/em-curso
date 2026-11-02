@@ -1,0 +1,29 @@
+{
+  "name": "campus-hub-server",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --watch src/index.js",
+    "start": "node --env-file-if-exists=.env src/index.js",
+    "admin:create": "node --env-file-if-exists=.env scripts/criar-admin.js",
+    "test": "node --test",
+    "ai:web": "node scripts/atualizar-web.js",
+    "ai:index": "node --env-file-if-exists=.env scripts/indexar-ia.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.1.5",
+    "@fastify/rate-limit": "^11.2.1",
+    "@google/genai": "^2.32.0",
+    "@inquirer/prompts": "^8.7.5",
+    "cheerio": "^1.2.0",
+    "fastify": "^5.12.7",
+    "nodemailer": "^10.3.1"
+  },
+  "devDependencies": {
+    "@inquirer/testing": "^3.3.16"
+  }
+}

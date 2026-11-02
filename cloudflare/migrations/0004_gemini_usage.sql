@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS gemini_usage (
+  model TEXT PRIMARY KEY,
+  chamadas INTEGER NOT NULL DEFAULT 0,
+  prompt_tokens INTEGER NOT NULL DEFAULT 0,
+  output_tokens INTEGER NOT NULL DEFAULT 0,
+  total_tokens INTEGER NOT NULL DEFAULT 0,
+  sem_metadados INTEGER NOT NULL DEFAULT 0,
+  inicio INTEGER NOT NULL,
+  atualizado INTEGER NOT NULL
+);

@@ -1,0 +1,23 @@
+{
+  "name": "campus-hub-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "dev": "wrangler dev --local",
+    "db:local": "wrangler d1 migrations apply campus-hub --local",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "knowledge:prepare": "node scripts/preparar-conhecimento.mjs",
+    "data:export": "node scripts/exportar-dados.mjs",
+    "config:check": "node scripts/verificar-configuracao.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "miniflare": "5.20261023.3-beta",
+    "wrangler": "^4.156.0"
+  },
+  "dependencies": {
+    "jose": "6.2.14"
+  }
+}

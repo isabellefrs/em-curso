@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS oauth_estados (hash TEXT PRIMARY KEY, nonce TEXT NOT NULL, verifier TEXT NOT NULL, expira INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS sessoes_google (hash TEXT PRIMARY KEY, sub TEXT NOT NULL, email TEXT NOT NULL, expira INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS limites (chave TEXT PRIMARY KEY, quantidade INTEGER NOT NULL, expira INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_limites_expira ON limites(expira);
+CREATE TABLE IF NOT EXISTS previa_exclusao (hash TEXT PRIMARY KEY, inicio TEXT NOT NULL, fim TEXT NOT NULL, versao INTEGER NOT NULL, expira INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS versoes (nome TEXT PRIMARY KEY, numero INTEGER NOT NULL DEFAULT 0);
+INSERT OR IGNORE INTO versoes(nome) VALUES('eventos');
+CREATE TRIGGER IF NOT EXISTS eventos_inserir AFTER INSERT ON eventos BEGIN UPDATE versoes SET numero=numero+1 WHERE nome='eventos'; END;
+CREATE TRIGGER IF NOT EXISTS eventos_editar AFTER UPDATE ON eventos BEGIN UPDATE versoes SET numero=numero+1 WHERE nome='eventos'; END;
+CREATE TRIGGER IF NOT EXISTS eventos_excluir AFTER DELETE ON eventos BEGIN UPDATE versoes SET numero=numero+1 WHERE nome='eventos'; END;
+CREATE TABLE IF NOT EXISTS conhecimento (id TEXT PRIMARY KEY, topic TEXT NOT NULL, dados TEXT NOT NULL);
+CREATE VIRTUAL TABLE IF NOT EXISTS conhecimento_fts USING fts5(id UNINDEXED, texto, tokenize='unicode61 remove_diacritics 2');
+CREATE TABLE IF NOT EXISTS conhecimento_meta (id INTEGER PRIMARY KEY CHECK(id=1), dados TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS agenda_cloudflare (dia TEXT PRIMARY KEY, execucao TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS trava_rotina (id INTEGER PRIMARY KEY CHECK(id=1), dono TEXT NOT NULL, expira INTEGER NOT NULL);

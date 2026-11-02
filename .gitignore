@@ -1,0 +1,26 @@
+# Dependências instaladas e resultados de compilação
+node_modules/
+dist/
+coverage/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Configurações locais que podem conter credenciais
+.env
+.env.*
+!.env.example
+
+# Logs de execução
+*.log
+
+# Banco local, sessões e arquivos auxiliares do SQLite
+server/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Wrangler local configuration contains account identifiers and contact details
+cloudflare/wrangler.jsonc
