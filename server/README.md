@@ -4,7 +4,7 @@ API local em JavaScript, Node.js 24.14+, Fastify e SQLite. A organização separ
 
 ## Executar
 
-Abra um terminal na pasta campus-hub/server:
+Abra um terminal na pasta em-curso/server:
 
 ```powershell
 npm.cmd install
@@ -15,7 +15,7 @@ Servidor: http://127.0.0.1:3001. A interface Vite usa a porta 5175 e encaminha /
 
 ## Criar seu administrador
 
-Em outro terminal dentro de campus-hub/server:
+Em outro terminal dentro de em-curso/server:
 
 ```powershell
 npm.cmd run admin:create

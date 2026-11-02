@@ -33,12 +33,12 @@ Não foram feitas chamadas reais de geração/embeddings nesta entrega: a chave 
 Em dois terminais:
 
 ```powershell
-cd "C:\Users\isabe\Documents\ChatGPT\calendario\campus-hub\server"
+cd "C:\Users\isabe\Documents\ChatGPT\calendario\em-curso\server"
 npm.cmd run dev
 ```
 
 ```powershell
-cd "C:\Users\isabe\Documents\ChatGPT\calendario\campus-hub\client"
+cd "C:\Users\isabe\Documents\ChatGPT\calendario\em-curso\client"
 npm.cmd run dev
 ```
 

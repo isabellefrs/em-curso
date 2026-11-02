@@ -4,7 +4,7 @@ React com JavaScript, Vite e CSS. O calendário público consulta o servidor; a 
 
 ## Executar
 
-Abra um terminal dentro de campus-hub/client:
+Abra um terminal dentro de em-curso/client:
 
 ```powershell
 npm.cmd run dev
